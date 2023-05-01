@@ -84,7 +84,12 @@ function TodoListPage() {
     // const {isLoading, isError, data} = useQuery(`task${params.id}`, ()=>getTaskById(+params.id))
 
     if (isLoading) {
-        return <h1>로딩중입니다...!</h1>;
+        return (
+            <h1>
+                웹서버가 금방 켜졌어요. 초기 사용 시 매우 느려요.
+                로딩중입니다...!
+            </h1>
+        );
     }
     if (isError) {
         return <h1>오류가 발생하였습니다...!</h1>;
