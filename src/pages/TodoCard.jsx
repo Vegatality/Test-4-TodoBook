@@ -18,6 +18,7 @@ function TodoCard() {
 
     // todos${+id} 쿼리는 무효화 업데이트 안했음. 싱크 안맞췄다는 뜻. 그래서 이 쿼리는 이전 값 갖고 있음.
     // 근데 나는 location으로 state옵션 사용할 줄 아니까 그냥 처음부터 그걸로 굴릴 껄... 굳이 이거 아이디 찾아서 안불러도 된다.
+    // 만약 링크로 여기로 바로 들어올 수도 있는 경우에는 여기서 get을 해줘야 하기 때문에 useQuery를 써야 한다! 넘어온 데이터가 있으면 location의 데이터를 쓰고 아니면 useQuery 쓰도록 설계.
     // const { isLoading, isError, data } = useQuery(`todos${+id}`, () =>
     //     getCard(id)
     // );
