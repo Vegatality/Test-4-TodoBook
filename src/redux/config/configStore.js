@@ -6,8 +6,8 @@ const store = configureStore({
     reducer: {
         todo,
     },
-    enhancers:
-        process.env.NODE_ENV === "development" ? [composeWithDevTools()] : [],
+    // development 는 개발 환경, production은 배포환경. 배포환경이 아닐 때만 devTool 보이게 설정.
+    devTools: process.env.NODE_ENV !== "production",
 });
 
 export default store;
