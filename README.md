@@ -10,6 +10,6 @@ redux, redux-toolkit, axios, json-server, polished, react-dom, and etc...
 
 You may see a very slow update on initial use.(using render.com web service)
 
-# deploy url
+# url changed
 
 separated todoBook project into two parts with json.server and FE projects.
