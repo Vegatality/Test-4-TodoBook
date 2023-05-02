@@ -39,7 +39,7 @@ function EditCard({ setEditCardMode, card, setCard }) {
                 mutation.mutate(renewCard);
             }
         }
-        // 바뀐 내용이 없더라도 돌아갈 수는 있어야 해야 함.
+        // 바뀐 내용이 없더라도 돌아갈 수는 있어야 함.
         setEditCardMode((state) => !state);
     };
 
