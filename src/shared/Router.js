@@ -18,17 +18,29 @@ function Router() {
     const checkCookie = cookie.get("todos");
     const dispatch = useDispatch();
 
-    // enabled(boolean)
-    // 쿼리가 자동으로 실행되지 않게 설정하는 옵션.
+    // enabled(boolean) : 쿼리가 자동으로 실행되지 않게 설정하는 옵션.
     // checkCookie가 존재할 때만 쿼리 요청을 한다는 의미의 코드.
     // !! 를 두 번 써준 이유는 일반 문자type을 boolean 형으로 변환하기 위함임.
+
+    // staleTime 옵션(number|Infinity) : 데이터가 refresh 상태로 유지되는 시간. 해당 시간이 지나면 stale 상태가 된다.
+    // default stale은 0이다. fresh 상태에서는 쿼리가 다시 mount 되어도 fetch가 실행되지 않는다.
+
+    // refetchOnWindowFocus: 데이터가 stale 상태일 경우 마운트 시마다 refetch 실행하는 옵션.
+    // default는 true
+    // 예를 들어, 크롬에서 다른 탭을 눌렀다가 다시 원래 보던 중인 탭을 눌렀을 때도 이 경우에 해당한다.
+    // 심지어 F12로 개발자 도구 창을 켜서 네트워크 탭이든, 콘솔 탭이든 개발자 도구 창에서 놀다가 페이지 내부를 다시 클릭했을 때도 이 경우에 해당한다.
+    // always 로 설정하면 항상 윈도우 포커싱 될 때 마다 refetch를 실행한다는 의미이다.
+
+    // QueryClient defaultOptions 설정으로 refetch 기능들을 다 false로 꺼버렸을 경우에는 refetch 기능이 실행되지 않는다.
+    // 그럴 경우엔 refetchOnWindowFocus 옵션이 실행되게끔 true로 설정하면 된다.
+    // fresh 상태인 1분 동안은 아무리 다른 탭을 왔다갔다해도 fetch 요청을 하지 않는다.(이게 제일 좋음)
 
     // useQuery는 비동기 함수!!!
     const { isLoading, isError, data, error } = useQuery("auth", checkAuth, {
         enabled: !!checkCookie,
         retry: false,
         refetchOnWindowFocus: true,
-        // staleTime: 1 * 1000,
+        staleTime: 60 * 1000,
         // refetchOnMount: true,
     });
     const queryClient = useQueryClient();
@@ -51,7 +63,7 @@ function Router() {
         }
     }
 
-    console.log(data);
+    // console.log(data);
 
     // Route를 감싼다.
     //
