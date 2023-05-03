@@ -128,7 +128,7 @@ function SetGoalPage() {
     );
 }
 
-const StForm = styled.form`
+export const StForm = styled.form`
     display: flex;
     flex-direction: column;
     padding: 24px;
@@ -136,14 +136,14 @@ const StForm = styled.form`
     height: 100%;
 `;
 
-const StLabel = styled.label`
+export const StLabel = styled.label`
     margin: 30px;
     font-size: xx-large;
     font-weight: bolder;
     color: #f5f5f5;
 `;
 
-const StInput = styled.input`
+export const StInput = styled.input`
     /* outline 속성 reset 속성으로 넣자. */
     /* outline: none; */
     padding: 20px 10px;

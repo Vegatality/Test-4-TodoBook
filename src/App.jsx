@@ -4,6 +4,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "styles/GlobalStyle";
 import { colors } from "styles/theme";
+import LoginTest from "LoginTest";
+import { CookiesProvider } from "react-cookie";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
 function App() {
@@ -13,7 +16,10 @@ function App() {
         <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={colors}>
                 <GlobalStyle />
-                <Router />
+                <BrowserRouter>
+                    <Router />
+                </BrowserRouter>
+                {/* <LoginTest /> */}
             </ThemeProvider>
         </QueryClientProvider>
     );

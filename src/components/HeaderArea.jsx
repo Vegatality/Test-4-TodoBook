@@ -1,16 +1,42 @@
-import React from "react";
+import { checkAuth } from "api/mockData";
+import React, { useEffect } from "react";
+import { useQuery } from "react-query";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { DELETE_TOKEN } from "redux/modules/authSlice";
 import styled from "styled-components";
+import { cookie } from "utils/cookie";
 
 const IconStyle = {
+    color: "white",
     margin: "20px",
     fontSize: "xx-large",
+    cursor: "pointer",
+};
+const IconStyle2 = {
+    color: "white",
+    margin: "20px",
+    fontSize: "larger",
     cursor: "pointer",
 };
 
 function HeaderArea() {
     const navigate = useNavigate();
     const location = useLocation();
+
+    const userId = useSelector((state) => {
+        // console.log(state.auth);
+        return state.auth.userId;
+    });
+
+    const dispatch = useDispatch();
+
+    const logOut = () => {
+        cookie.remove("todos");
+        dispatch(DELETE_TOKEN());
+        navigate("/");
+    };
+
     const goToHome = () => {
         navigate("/", {
             state: location,
@@ -24,7 +50,13 @@ function HeaderArea() {
                     🏠
                 </div>
                 <StTitle>Todo</StTitle>
-                <div style={IconStyle}>99</div>
+                {userId ? (
+                    <div style={IconStyle2} onClick={logOut}>
+                        로그아웃하기
+                    </div>
+                ) : (
+                    <div style={IconStyle}>99</div>
+                )}
             </StHeaderAdjustment>
         </StHeaderContainer>
     );

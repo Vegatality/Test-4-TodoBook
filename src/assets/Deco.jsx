@@ -22,11 +22,18 @@ const StDecoWrapper = styled.div`
     justify-content: space-evenly;
 `;
 
-const StDecoLine = styled.div`
+export const StDecoLine = styled.div`
     border-radius: 10px;
     height: 20px;
     background-color: white;
     margin-inline: 100px;
+`;
+
+export const StDeco = styled.div`
+    height: 20px;
+    /* border-radius: 10px; */
+    background-color: white;
+    width: 100%;
 `;
 
 export default Deco;

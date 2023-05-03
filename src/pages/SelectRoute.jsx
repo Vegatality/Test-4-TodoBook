@@ -1,14 +1,13 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { StBookWrapper } from "../components/StBookWrapper";
-import Deco from "../assets/Deco";
-import { BackIcon } from "assets/Icons";
 import Buttons from "assets/Buttons";
+import Deco from "assets/Deco";
+import React from "react";
+import styled from "styled-components";
+import { BackIcon } from "assets/Icons";
+import { useNavigate } from "react-router-dom";
+import { StBookWrapper } from "components/StBookWrapper";
 
 function SelectRoute() {
     const navigate = useNavigate();
-
     const CategoryHandler = (e) => {
         navigate(`/${e.target.name}`);
     };
